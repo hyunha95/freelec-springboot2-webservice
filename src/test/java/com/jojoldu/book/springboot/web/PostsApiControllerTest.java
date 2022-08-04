@@ -56,4 +56,14 @@ public class PostsApiControllerTest {
         assertThat(all.get(0)).isEqualTo(content);
     }
 
+    @Test
+    public void Posts_수정된다() throws Exception {
+        //given
+        Posts savedPosts = postsRepository.save(Posts.builder()
+                .title("title")
+                .content("content")
+                .author("author")
+                .build());
+    }
+
 }
