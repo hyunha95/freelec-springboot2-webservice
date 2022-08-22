@@ -166,5 +166,10 @@ index.js 호출 코드를 보면 절대 경로(/)로 바로 시작한다. 스프
 - src/mmainresources/static/image/···(http://도메인/image/···)
 
 
-
+1. {{#userName}}
+- 머스테치는 다른 언어와 같은 if문(if userName != null등)을 제공하지 않는다.
+- true/false 여부만 판단할 뿐이다.
+- 그래서 머스테치에서는 항상 최종값을 넘겨줘야 한다.
+3. {{^userName}}
+- 머스테치에서 해당 값이 존재하지 않는 경우에는 ^를 사용한다.
 
