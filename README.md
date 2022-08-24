@@ -166,10 +166,15 @@ index.js 호출 코드를 보면 절대 경로(/)로 바로 시작한다. 스프
 - src/mmainresources/static/image/···(http://도메인/image/···)
 
 
-1. {{#userName}}
+{{#userName}}
 - 머스테치는 다른 언어와 같은 if문(if userName != null등)을 제공하지 않는다.
 - true/false 여부만 판단할 뿐이다.
-- 그래서 머스테치에서는 항상 최종값을 넘겨줘야 한다.
-3. {{^userName}}
-- 머스테치에서 해당 값이 존재하지 않는 경우에는 ^를 사용한다.
-
+- 그래서 머스테치에서는 항상 최종값을 넘겨줘야 한다.   
+{{^userName}}
+- 머스테치에서 해당 값이 존재하지 않는 경우에는 ^를 사용한다.   
+@Target(ElementType.PARAMETER)
+- 이 어노테이션이 생성될 수 있는 위치를 지정한다.
+- PARAMETER로 지정했으니 메소드의 파라미터로 선언된 객체에서만 사용할 수 있다.
+- 이 외에도 클래스 선언문에 쓸 수 있는 TYPE 등이 있다.
+@Interface
+- 이 파일을 어노테이션 클래스로 지정한다.
