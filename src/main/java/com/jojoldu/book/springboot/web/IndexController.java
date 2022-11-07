@@ -16,32 +16,30 @@ import javax.servlet.http.HttpSession;
 @Controller
 public class IndexController {
 
-    private final PostsService postsService;
-    private final HttpSession httpSession;
+	private final PostsService postsService;
+	private final HttpSession httpSession;
 
-    @GetMapping("/")
-    public String index(Model model, @LoginUser SessionUser user) {
-        model.addAttribute("posts", postsService.findAllDesc());
+	@GetMapping("/")
+	public String index(Model model, @LoginUser SessionUser user) {
+		model.addAttribute("posts", postsService.findAllDesc());
 
-        if(user != null) {
-            model.addAttribute("userName", user.getName());
-        }
-        return "index";
-    }
+//		SessionUser user = (SessionUser) httpSession.getAttribute("user");
+		if(user != null) {
+			model.addAttribute("userName", user.getName());
+		}
+		return "index";
+	}
 
-    @GetMapping("/posts/save")
-    public String postsSave() {
-        return "posts-save";
-    }
+	@GetMapping("/posts/save")
+	public String postsSave() {
+		return "posts-save";
+	}
 
-    @GetMapping("/posts/update/{id}")
-    public String postsUpdate(@PathVariable Long id, Model model) {
+	@GetMapping("/posts/update/{id}")
+	public String postsUpdate(@PathVariable Long id, Model model) {
+		PostsResponseDto dto = postsService.findById(id);
+		model.addAttribute("post", dto);
 
-        PostsResponseDto dto = postsService.findById(id);
-        model.addAttribute("post", dto);
-
-        return "posts-update";
-    }
-
-
+		return "posts-update";
+	}
 }

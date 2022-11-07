@@ -31,10 +31,10 @@ public class PostsRepositoryTest {
         String content = "테스트 본문";
 
         postsRepository.save(Posts.builder()
-                        .title(title)
-                        .content(content)
-                        .author("jojoldu@gmail.com")
-                        .build());
+                .title(title)
+                .content(content)
+                .author("jojoldu@gmail.com")
+                .build());
 
         //when
         List<Posts> postsList = postsRepository.findAll();
@@ -54,13 +54,14 @@ public class PostsRepositoryTest {
                 .content("content")
                 .author("author")
                 .build());
+
         //when
         List<Posts> postsList = postsRepository.findAll();
 
         //then
         Posts posts = postsList.get(0);
 
-        System.out.println(">>>>>>>>>> createDate=" + posts.getCreatedDate() + ", modifiedDate = " + posts.getModifiedDate());
+        System.out.println(">>>>>>>>>>>>>> createDate=" + posts.getCreatedDate() + ", modifiedDate=" +posts.getModifiedDate());
 
         assertThat(posts.getCreatedDate()).isAfter(now);
         assertThat(posts.getModifiedDate()).isAfter(now);
